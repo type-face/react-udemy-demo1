@@ -19032,52 +19032,89 @@ process.umask = function() { return 0; };
 
 },{}],159:[function(require,module,exports){
 var React = require('react');
-var ListItem = require('./ListItem.jsx');
 
-var ingredients = [{ "id": 1, "text": "ham" }, { "id": 2, "text": "cheese" }, { "id": 3, "text": "lettuce" }];
-var List = React.createClass({
-  displayName: 'List',
+var SmallSplitPanel = React.createClass({
+    displayName: 'SmallSplitPanel',
 
-  render: function () {
-    var listItems = ingredients.map(function (item) {
-      return React.createElement(ListItem, { key: item.id, ingredient: item.text });
-    });
 
-    return React.createElement(
-      'ul',
-      null,
-      listItems
-    );
-  }
+    render: function () {
+
+        panelStyle = {
+            height: 180,
+            marginTop: 10
+        };
+
+        panelHeaderStyle = {
+            backgroundImage: null,
+            background: '#FFFFFF',
+            borderBottomWidth: 0,
+            color: "#656565"
+        };
+
+        panelHeaderH3 = {
+            marginTop: 0,
+            marginBottom: 0,
+            fontSize: "2em",
+            fontWeight: 500
+        };
+
+        headerSuperTextStyle = {
+            marginTop: 20
+        };
+
+        panelBodyStyle = {
+            color: "#B9BABA",
+            fontSize: "1.25em"
+        };
+
+        if (!this.props.titleText) {
+            panelBodyStyle.paddingTop = 0;
+        }
+
+        if (this.props.headerColor) {
+            panelHeaderStyle.background = this.props.headerColor;
+            panelHeaderStyle.borderBottomWidth = "1";
+            panelHeaderStyle.color = "white";
+        };
+
+        return React.createElement(
+            'div',
+            { className: 'col-xs-12 col-sm-3' },
+            React.createElement(
+                'div',
+                { style: panelStyle, className: 'panel panel-default' },
+                React.createElement(
+                    'div',
+                    { style: panelHeaderStyle, className: 'panel-heading' },
+                    React.createElement(
+                        'div',
+                        { style: headerSuperTextStyle },
+                        this.props.titleText
+                    ),
+                    React.createElement(
+                        'h3',
+                        { style: panelHeaderH3 },
+                        this.props.headerText
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { style: panelBodyStyle, className: 'panel-body' },
+                    this.props.bodyText
+                )
+            )
+        );
+    }
 });
 
-module.exports = List;
+module.exports = SmallSplitPanel;
 
-},{"./ListItem.jsx":160,"react":157}],160:[function(require,module,exports){
-var React = require('react');
-var ListItem = React.createClass({
-  displayName: 'ListItem',
-
-  render: function () {
-    return React.createElement(
-      'li',
-      null,
-      React.createElement(
-        'h4',
-        null,
-        this.props.ingredient
-      )
-    );
-  }
-});
-
-module.exports = ListItem;
-
-},{"react":157}],161:[function(require,module,exports){
+},{"react":157}],160:[function(require,module,exports){
 var React = require('react');
 var ReactDom = require('react-dom');
-var List = require('./components/List.jsx');
+var SmallSplitPanel = require('./components/SmallSplitPanel.jsx');
 
-ReactDom.render(React.createElement(List, null), document.getElementById('ingredients'));
+ReactDom.render(React.createElement(SmallSplitPanel, { headerText: '20', bodyText: 'New followers added this month' }), document.getElementById('followers'));
+ReactDom.render(React.createElement(SmallSplitPanel, { headerText: '$1250', titleText: 'super text', headerColor: 'blue', bodyText: 'Average monthly income' }), document.getElementById('avgMonthlyIncome'));
 
-},{"./components/List.jsx":159,"react":157,"react-dom":1}]},{},[161]);
+},{"./components/SmallSplitPanel.jsx":159,"react":157,"react-dom":1}]},{},[160]);
