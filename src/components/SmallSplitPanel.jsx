@@ -24,7 +24,8 @@ var SmallSplitPanel = React.createClass({
         }
 
         headerSuperTextStyle = {
-            marginTop: 20
+            marginTop: 20,
+            fontSize: '1.2em'
         }
 
         panelBodyStyle = {

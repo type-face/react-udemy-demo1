@@ -19145,7 +19145,8 @@ var SmallSplitPanel = React.createClass({
         };
 
         headerSuperTextStyle = {
-            marginTop: 20
+            marginTop: 20,
+            fontSize: '1.2em'
         };
 
         panelBodyStyle = {
@@ -19244,5 +19245,9 @@ ReactDom.render(React.createElement(SmallSplitPanel, { headerText: '$13865', bod
 ReactDom.render(React.createElement(WeatherPanel, { temperature: '20', city: 'Winnipeg', color: '#FF8A00' }), document.getElementById('weather'));
 ReactDom.render(React.createElement(LargeSplitPanel, { color: '#0096D0', footerValueColumn1: '15080', footerDescriptionColumn1: 'Shot Views', footerValueColumn2: '12000', footerDescriptionColumn2: 'Likes', footerValueColumn3: '5100', footerDescriptionColumn3: 'Comments' }), document.getElementById('largeSplitPanel1'));
 ReactDom.render(React.createElement(LargeSplitPanel, { color: '#CD59AE', footerValueColumn1: '2345', footerDescriptionColumn1: 'Shot Views', footerValueColumn2: '11111', footerDescriptionColumn2: 'Likes', footerValueColumn3: '12352', footerDescriptionColumn3: 'Comments' }), document.getElementById('largeSplitPanel2'));
+ReactDom.render(React.createElement(SmallSplitPanel, { headerText: '1.5K', headerColor: '#0096D0', titleText: 'New visitors' }), document.getElementById('newVisitors'));
+ReactDom.render(React.createElement(SmallSplitPanel, { headerText: '50%', headerColor: '#B28AD6', titleText: 'Bounce rate' }), document.getElementById('bounceRate'));
+ReactDom.render(React.createElement(SmallSplitPanel, { headerText: '28%', headerColor: '#FF4826', titleText: 'Searches' }), document.getElementById('searches'));
+ReactDom.render(React.createElement(SmallSplitPanel, { headerText: '140.5 kb', headerColor: '#63C254', titleText: 'Traffic' }), document.getElementById('traffic'));
 
 },{"./components/LargeSplitPanel.jsx":159,"./components/SmallSplitPanel.jsx":160,"./components/WeatherPanel.jsx":161,"react":157,"react-dom":1}]},{},[162]);
