@@ -13,13 +13,13 @@ var SmallSplitPanel = React.createClass({
             backgroundImage: null,
             background: '#FFFFFF',
             borderBottomWidth: 0,
-            color: "#656565",
+            color: '#656565',
         };
 
         panelHeaderH3 = {
             marginTop: 0,
             marginBottom: 0,
-            fontSize: "2em",
+            fontSize: '2em',
             fontWeight: 500
         }
 
@@ -28,8 +28,8 @@ var SmallSplitPanel = React.createClass({
         }
 
         panelBodyStyle = {
-            color: "#B9BABA",
-            fontSize: "1.25em",
+            color: '#B9BABA',
+            fontSize: '1.25em',
         }
 
         if (!this.props.titleText) {
@@ -38,24 +38,22 @@ var SmallSplitPanel = React.createClass({
 
         if (this.props.headerColor) {
             panelHeaderStyle.background = this.props.headerColor;
-            panelHeaderStyle.borderBottomWidth = "1";
-            panelHeaderStyle.color = "white";
+            panelHeaderStyle.borderBottomWidth = '1';
+            panelHeaderStyle.color = 'white';
         };
 
         return (
-            <div className="col-xs-12 col-sm-3">
-                <div style={panelStyle} className="panel panel-default">
-                    <div style={panelHeaderStyle} className="panel-heading">
-                        <div style={headerSuperTextStyle}>
-                            {this.props.titleText}
-                        </div>
-                        <h3 style={panelHeaderH3}>
-                            {this.props.headerText}
-                        </h3>
+            <div style={panelStyle} className='panel panel-default'>
+                <div style={panelHeaderStyle} className='panel-heading'>
+                    <div style={headerSuperTextStyle}>
+                        {this.props.titleText}
                     </div>
-                    <div style={panelBodyStyle} className="panel-body">
-                        {this.props.bodyText}
-                    </div>
+                    <h3 style={panelHeaderH3}>
+                        {this.props.headerText}
+                    </h3>
+                </div>
+                <div style={panelBodyStyle} className='panel-body'>
+                    {this.props.bodyText}
                 </div>
             </div>
         )

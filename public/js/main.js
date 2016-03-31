@@ -19033,6 +19033,92 @@ process.umask = function() { return 0; };
 },{}],159:[function(require,module,exports){
 var React = require('react');
 
+var LargeSplitPanel = React.createClass({
+    displayName: "LargeSplitPanel",
+
+
+    render: function () {
+
+        panelStyle = {
+            height: 300,
+            background: "#484D4D"
+
+        };
+
+        panelTopStyle = {
+            height: 210,
+            background: this.props.color
+        };
+
+        footerValueStyle = {
+            color: "white",
+            fontSize: "2em"
+        };
+
+        footerDescriptionStyle = {
+            color: "#B0B1B1",
+            fontSize: "1.15em"
+        };
+
+        return React.createElement(
+            "div",
+            { style: panelStyle, className: "panel panel-default" },
+            React.createElement("div", { style: panelTopStyle, className: "panel-heading" }),
+            React.createElement(
+                "div",
+                { className: "row panel-body" },
+                React.createElement(
+                    "div",
+                    { className: "col-xs-4 text-center" },
+                    React.createElement(
+                        "div",
+                        { style: footerValueStyle, className: "row" },
+                        this.props.footerValueColumn1
+                    ),
+                    React.createElement(
+                        "div",
+                        { style: footerDescriptionStyle, className: "row" },
+                        this.props.footerDescriptionColumn1
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    { className: "col-xs-4 text-center" },
+                    React.createElement(
+                        "div",
+                        { style: footerValueStyle, className: "row" },
+                        this.props.footerValueColumn2
+                    ),
+                    React.createElement(
+                        "div",
+                        { style: footerDescriptionStyle, className: "row" },
+                        this.props.footerDescriptionColumn2
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    { className: "col-xs-4 text-center" },
+                    React.createElement(
+                        "div",
+                        { style: footerValueStyle, className: "row" },
+                        this.props.footerValueColumn3
+                    ),
+                    React.createElement(
+                        "div",
+                        { style: footerDescriptionStyle, className: "row" },
+                        this.props.footerDescriptionColumn3
+                    )
+                )
+            )
+        );
+    }
+});
+
+module.exports = LargeSplitPanel;
+
+},{"react":157}],160:[function(require,module,exports){
+var React = require('react');
+
 var SmallSplitPanel = React.createClass({
     displayName: 'SmallSplitPanel',
 
@@ -19048,13 +19134,13 @@ var SmallSplitPanel = React.createClass({
             backgroundImage: null,
             background: '#FFFFFF',
             borderBottomWidth: 0,
-            color: "#656565"
+            color: '#656565'
         };
 
         panelHeaderH3 = {
             marginTop: 0,
             marginBottom: 0,
-            fontSize: "2em",
+            fontSize: '2em',
             fontWeight: 500
         };
 
@@ -19063,8 +19149,8 @@ var SmallSplitPanel = React.createClass({
         };
 
         panelBodyStyle = {
-            color: "#B9BABA",
-            fontSize: "1.25em"
+            color: '#B9BABA',
+            fontSize: '1.25em'
         };
 
         if (!this.props.titleText) {
@@ -19073,35 +19159,31 @@ var SmallSplitPanel = React.createClass({
 
         if (this.props.headerColor) {
             panelHeaderStyle.background = this.props.headerColor;
-            panelHeaderStyle.borderBottomWidth = "1";
-            panelHeaderStyle.color = "white";
+            panelHeaderStyle.borderBottomWidth = '1';
+            panelHeaderStyle.color = 'white';
         };
 
         return React.createElement(
             'div',
-            { className: 'col-xs-12 col-sm-3' },
+            { style: panelStyle, className: 'panel panel-default' },
             React.createElement(
                 'div',
-                { style: panelStyle, className: 'panel panel-default' },
+                { style: panelHeaderStyle, className: 'panel-heading' },
                 React.createElement(
                     'div',
-                    { style: panelHeaderStyle, className: 'panel-heading' },
-                    React.createElement(
-                        'div',
-                        { style: headerSuperTextStyle },
-                        this.props.titleText
-                    ),
-                    React.createElement(
-                        'h3',
-                        { style: panelHeaderH3 },
-                        this.props.headerText
-                    )
+                    { style: headerSuperTextStyle },
+                    this.props.titleText
                 ),
                 React.createElement(
-                    'div',
-                    { style: panelBodyStyle, className: 'panel-body' },
-                    this.props.bodyText
+                    'h3',
+                    { style: panelHeaderH3 },
+                    this.props.headerText
                 )
+            ),
+            React.createElement(
+                'div',
+                { style: panelBodyStyle, className: 'panel-body' },
+                this.props.bodyText
             )
         );
     }
@@ -19109,12 +19191,58 @@ var SmallSplitPanel = React.createClass({
 
 module.exports = SmallSplitPanel;
 
-},{"react":157}],160:[function(require,module,exports){
+},{"react":157}],161:[function(require,module,exports){
+var React = require('react');
+
+var WeatherPanel = React.createClass({
+    displayName: 'WeatherPanel',
+
+
+    render: function () {
+
+        weatherWellStyle = {
+            height: 180,
+            marginTop: 10,
+            background: this.props.color,
+            color: 'white'
+        };
+
+        temperatureStyle = {
+            fontSize: '3em'
+        };
+
+        return React.createElement(
+            'div',
+            { style: weatherWellStyle, className: 'well well-lg text-center' },
+            React.createElement(
+                'div',
+                { style: temperatureStyle, className: 'row' },
+                this.props.temperature,
+                '°'
+            ),
+            React.createElement(
+                'div',
+                { className: 'row' },
+                this.props.city
+            )
+        );
+    }
+});
+
+module.exports = WeatherPanel;
+
+},{"react":157}],162:[function(require,module,exports){
 var React = require('react');
 var ReactDom = require('react-dom');
 var SmallSplitPanel = require('./components/SmallSplitPanel.jsx');
+var WeatherPanel = require('./components/WeatherPanel.jsx');
+var LargeSplitPanel = require('./components/LargeSplitPanel.jsx');
 
 ReactDom.render(React.createElement(SmallSplitPanel, { headerText: '20', bodyText: 'New followers added this month' }), document.getElementById('followers'));
-ReactDom.render(React.createElement(SmallSplitPanel, { headerText: '$1250', titleText: 'super text', headerColor: 'blue', bodyText: 'Average monthly income' }), document.getElementById('avgMonthlyIncome'));
+ReactDom.render(React.createElement(SmallSplitPanel, { headerText: '$1250', bodyText: 'Average Monthly Income' }), document.getElementById('avgMonthlyIncome'));
+ReactDom.render(React.createElement(SmallSplitPanel, { headerText: '$13865', bodyText: 'Yearly Income Goal' }), document.getElementById('yearlyIncomeGoal'));
+ReactDom.render(React.createElement(WeatherPanel, { temperature: '20', city: 'Winnipeg', color: '#FF8A00' }), document.getElementById('weather'));
+ReactDom.render(React.createElement(LargeSplitPanel, { color: '#0096D0', footerValueColumn1: '15080', footerDescriptionColumn1: 'Shot Views', footerValueColumn2: '12000', footerDescriptionColumn2: 'Likes', footerValueColumn3: '5100', footerDescriptionColumn3: 'Comments' }), document.getElementById('largeSplitPanel1'));
+ReactDom.render(React.createElement(LargeSplitPanel, { color: '#CD59AE', footerValueColumn1: '2345', footerDescriptionColumn1: 'Shot Views', footerValueColumn2: '11111', footerDescriptionColumn2: 'Likes', footerValueColumn3: '12352', footerDescriptionColumn3: 'Comments' }), document.getElementById('largeSplitPanel2'));
 
-},{"./components/SmallSplitPanel.jsx":159,"react":157,"react-dom":1}]},{},[160]);
+},{"./components/LargeSplitPanel.jsx":159,"./components/SmallSplitPanel.jsx":160,"./components/WeatherPanel.jsx":161,"react":157,"react-dom":1}]},{},[162]);
